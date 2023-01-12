@@ -24,6 +24,8 @@ class MoviesView: BaseView {
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(hStackGenre)
+        stackView.addArrangedSubview(genreCollection)
         stackView.addArrangedSubview(hStackNowPlaying)
         stackView.addArrangedSubview(nowPlayingCollection)
         stackView.addArrangedSubview(hStackTopRated)
@@ -31,6 +33,46 @@ class MoviesView: BaseView {
         stackView.addArrangedSubview(vStackPopular)
         stackView.addArrangedSubview(bannerPopularView)
         return stackView
+    }()
+    
+    // MARK: Genre List
+    private let genreLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.text = MoviesConstant.genreTitle
+        return label
+    }()
+    
+    private lazy var hStackGenre: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .equalCentering
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 10, right: 16)
+        stack.addArrangedSubview(genreLabel)
+        return stack
+    }()
+    
+    private lazy var genreCollection: UICollectionView = {
+        let collectionFlowLayout = UICollectionViewFlowLayout()
+        collectionFlowLayout.scrollDirection = .horizontal
+        collectionFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        collectionFlowLayout.itemSize = CGSize(width: 130, height: 70)
+        
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: collectionFlowLayout)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(
+            MovieGenreCollectionCell.self,
+            forCellWithReuseIdentifier: MovieGenreCollectionCell.identifier)
+        collectionView.collectionViewLayout = collectionFlowLayout
+        collectionView.backgroundColor = .clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        return collectionView
     }()
     
     // MARK: Now Playing
@@ -79,7 +121,7 @@ class MoviesView: BaseView {
         stack.axis = .horizontal
         stack.distribution = .equalCentering
         stack.isLayoutMarginsRelativeArrangement = true
-        stack.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 10, right: 16)
+        stack.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 10, right: 16)
         stack.addArrangedSubview(nowPlayingLabel)
         stack.addArrangedSubview(seeNowPlayingLabel)
         return stack
@@ -249,6 +291,7 @@ class MoviesView: BaseView {
     
     @objc private func fetchData() {
         DispatchQueue.global().async {
+            self.presenter?.getGenreList()
             self.presenter?.getNowPlaying(page: 1)
             self.presenter?.getTopRated(page: 1)
             self.presenter?.getPopular(page: 1)
@@ -273,6 +316,12 @@ class MoviesView: BaseView {
 extension MoviesView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
+        case genreCollection:
+            if presenter?.genreList.count ?? 0 > 7 {
+                return 7
+            } else {
+                return presenter?.genreList.count ?? 0
+            }
         case nowPlayingCollection:
             return presenter?.nowPlaying.count ?? 0
         case topRatedCollection:
@@ -286,6 +335,13 @@ extension MoviesView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
+        case genreCollection:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieGenreCollectionCell.identifier, for: indexPath) as! MovieGenreCollectionCell
+            if let genre = presenter?.genreList[indexPath.row] {
+                cell.configure(object: genre)
+            }
+            cell.setCornerRadius(corner: 5)
+            return cell
         case nowPlayingCollection:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NowPlayingCollectionCell.identifier, for: indexPath) as! NowPlayingCollectionCell
             if let movie = presenter?.nowPlaying[indexPath.row] {
@@ -331,6 +387,8 @@ extension MoviesView: PresenterToViewProtocol {
                 self.topRatedCollection.reloadData()
             case .popular:
                 self.popularCollection.reloadData()
+            case .genre:
+                self.genreCollection.reloadData()
             }
         }
     }

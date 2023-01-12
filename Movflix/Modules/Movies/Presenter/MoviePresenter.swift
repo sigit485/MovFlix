@@ -8,6 +8,7 @@
 import Foundation
 
 protocol MoviePresenterProtocol {
+    func getGenreList()
     func getNowPlaying(page: Int)
     func getTopRated(page: Int)
     func getPopular(page: Int)
@@ -17,6 +18,8 @@ class MoviePresenter: MoviePresenterProtocol {
     private let movieUseCase: MovieUseCase
     private let delegate: PresenterToViewProtocol?
     
+    public var genreList: [GenreResult] = []
+    
     public var nowPlaying: [MovieResponseResult] = []
     public var topRated: [MovieResponseResult] = []
     public var popular: [MovieResponseResult] = []
@@ -24,6 +27,22 @@ class MoviePresenter: MoviePresenterProtocol {
     init(movieUseCase: MovieUseCase, delegate: PresenterToViewProtocol) {
         self.movieUseCase = movieUseCase
         self.delegate = delegate
+    }
+    
+    func getGenreList() {
+        delegate?.showLoading()
+        movieUseCase.getMovieGenreList { result in
+            switch result {
+            case .success(let data):
+                let category: MovieCategory = .genre
+                self.genreList = data
+                self.delegate?.dismissLoading()
+                self.delegate?.successLoadData(object: category)
+            case .failure(let error):
+                self.delegate?.dismissLoading()
+                self.delegate?.failedLoadData(Error: error)
+            }
+        }
     }
     
     func getNowPlaying(page: Int) {

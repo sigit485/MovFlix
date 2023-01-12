@@ -45,6 +45,8 @@
 		84B31AE9296FFAEB00305259 /* UIActivity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AE8296FFAEB00305259 /* UIActivity+Extensions.swift */; };
 		84B31AEB2970115900305259 /* TVListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AEA2970115900305259 /* TVListPresenter.swift */; };
 		84B31AED2970131B00305259 /* TelevisionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AEC2970131B00305259 /* TelevisionListView.swift */; };
+		84B31AEF29701BD700305259 /* GenreResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AEE29701BD700305259 /* GenreResponseEntity.swift */; };
+		84B31AF12970221A00305259 /* MovieGenreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AF02970221A00305259 /* MovieGenreCollectionCell.swift */; };
 		84ED45F6296DA43500D04BBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED45F5296DA43500D04BBB /* AppDelegate.swift */; };
 		84ED45FF296DA43700D04BBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84ED45FE296DA43700D04BBB /* Assets.xcassets */; };
 		84ED4602296DA43700D04BBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84ED4600296DA43700D04BBB /* LaunchScreen.storyboard */; };
@@ -114,6 +116,8 @@
 		84B31AE8296FFAEB00305259 /* UIActivity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivity+Extensions.swift"; sourceTree = "<group>"; };
 		84B31AEA2970115900305259 /* TVListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVListPresenter.swift; sourceTree = "<group>"; };
 		84B31AEC2970131B00305259 /* TelevisionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelevisionListView.swift; sourceTree = "<group>"; };
+		84B31AEE29701BD700305259 /* GenreResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponseEntity.swift; sourceTree = "<group>"; };
+		84B31AF02970221A00305259 /* MovieGenreCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGenreCollectionCell.swift; sourceTree = "<group>"; };
 		84ED45F2296DA43500D04BBB /* Movflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84ED45F5296DA43500D04BBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84ED45FE296DA43700D04BBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 			children = (
 				8485546A296E71B400B9FED4 /* NowPlayingCollectionCell.swift */,
 				84B31AE4296FC93300305259 /* MovieTableViewCell.swift */,
+				84B31AF02970221A00305259 /* MovieGenreCollectionCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				8485547F296EB94F00B9FED4 /* MovieResponseEntity.swift */,
+				84B31AEE29701BD700305259 /* GenreResponseEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -769,11 +775,13 @@
 				84B31AE5296FC93300305259 /* MovieTableViewCell.swift in Sources */,
 				84855482296EB9FB00B9FED4 /* APIManager.swift in Sources */,
 				84855480296EB94F00B9FED4 /* MovieResponseEntity.swift in Sources */,
+				84B31AEF29701BD700305259 /* GenreResponseEntity.swift in Sources */,
 				8485548E296ED4E300B9FED4 /* MoviePresenter.swift in Sources */,
 				8485545B296E63A000B9FED4 /* MainTabBarView.swift in Sources */,
 				84ED45F6296DA43500D04BBB /* AppDelegate.swift in Sources */,
 				84B31AE1296FA90400305259 /* TVViewBuilder.swift in Sources */,
 				84855487296EC4B600B9FED4 /* MovieInteractor.swift in Sources */,
+				84B31AF12970221A00305259 /* MovieGenreCollectionCell.swift in Sources */,
 				8485547D296EAB7B00B9FED4 /* MoviesConstant.swift in Sources */,
 				84B31AEB2970115900305259 /* TVListPresenter.swift in Sources */,
 				84B31AE7296FF27000305259 /* MovieListPresenter.swift in Sources */,

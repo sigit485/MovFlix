@@ -11,4 +11,5 @@ class MoviesConstant {
     public static let nowTitle = "Now Playing"
     public static let topTitle = "Top Rated"
     public static let popularTitle = "Popular"
+    public static let genreTitle = "Genres"
 }
