@@ -16,4 +16,14 @@ class TVViewBuilder {
         vc.router = router
         return vc
     }
+    
+    static func makeListTVView(router: TVRouter, category: TVCategory) -> TelevisionListView {
+        let vc = TelevisionListView()
+        let interactor = Injection.init().provideTV()
+        let presenter = TVListPresenter(tvUseCase: interactor, delegate: vc)
+        vc.presenter = presenter
+        vc.router = router
+        vc.category = category
+        return vc
+    }
 }

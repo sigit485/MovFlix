@@ -8,7 +8,11 @@
 import UIKit
 import Kingfisher
 
-class NowPlayingCollectionCell: UICollectionViewCell {
+protocol ContentCellProtocol {
+    func configure<T>(object: T?)
+}
+
+class NowPlayingCollectionCell: UICollectionViewCell, ContentCellProtocol {
     
     public static let identifier = "NowPlayingCollectionCell"
     
@@ -42,10 +46,10 @@ class NowPlayingCollectionCell: UICollectionViewCell {
     func configure<T>(object: T?) {
         if let object = object as? MovieResponseResult {
             posterImageView.kf.indicatorType = .activity
-            posterImageView.kf.setImage(with: URL.imagePath(from: object.posterPath ?? ""))
+            posterImageView.kf.setImage(with: URL.imagePath(from: object.posterPath ?? ""), placeholder: UIImage(named: "home_ic_cinema"))
         } else if let object = object as? TVResponseResult {
             posterImageView.kf.indicatorType = .activity
-            posterImageView.kf.setImage(with: URL.imagePath(from: object.posterPath ?? ""))
+            posterImageView.kf.setImage(with: URL.imagePath(from: object.posterPath ?? ""), placeholder: UIImage(named: "home_ic_cinema"))
         }
         
     }

@@ -6,9 +6,10 @@ target 'Movflix' do
   use_frameworks!
 
   # Pods for Movflix
-  pod 'NVActivityIndicatorView'
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'Cosmos', '~> 23.0'
+  pod 'UIScrollView-InfiniteScroll'
 
   target 'MovflixTests' do
     inherit! :search_paths

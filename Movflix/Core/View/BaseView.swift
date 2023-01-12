@@ -11,21 +11,38 @@ enum MovieCategory {
     case nowPlaying
     case topRated
     case popular
+    
+    var description: String {
+        switch self {
+        case .nowPlaying:
+            return "Now Playing"
+        case .topRated:
+            return "Top Rated"
+        case .popular:
+            return "Popular"
+        }
+    }
+    
 }
 
 enum TVCategory {
     case onAir
     case topRated
     case popular
+    
+    var description: String {
+        switch self {
+        case .onAir:
+            return "On The Air"
+        case .topRated:
+            return "Top Rated"
+        case .popular:
+            return "Popular"
+        }
+    }
 }
 
 class BaseView: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        createNavBar(image: UIImage(named: "splash")!)
-    }
-    
     
     func createNavBar(title: String? = nil, image: UIImage) {
         let imageView = UIImageView()

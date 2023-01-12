@@ -41,11 +41,14 @@ class TelevisionView: BaseView {
         return label
     }()
     
-    private let seeOnAirLabel: UILabel = {
+    private lazy var seeOnAirLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.text = Constant.seeAllTitle
         label.textColor = Color.shared.redPrimary
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(navigationTapped(sender:)))
+        label.addGestureRecognizer(tapGesture)
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -86,11 +89,14 @@ class TelevisionView: BaseView {
         return label
     }()
     
-    private let seeTopRatedLabel: UILabel = {
+    private lazy var seeTopRatedLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.text = Constant.seeAllTitle
         label.textColor = Color.shared.redPrimary
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(navigationTapped(sender:)))
+        label.addGestureRecognizer(tapGesture)
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -173,11 +179,14 @@ class TelevisionView: BaseView {
         return label
     }()
     
-    private let seePopularLabel: UILabel = {
+    private lazy var seePopularLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.text = Constant.seeAllTitle
         label.textColor = Color.shared.redPrimary
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(navigationTapped(sender:)))
+        label.addGestureRecognizer(tapGesture)
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -200,6 +209,7 @@ class TelevisionView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        createNavBar(image: UIImage(named: "splash")!)
         configureConstraint()
         setupRefreshControl()
     }
@@ -235,6 +245,19 @@ class TelevisionView: BaseView {
             self.presenter?.getOnAirShows(page: 1)
             self.presenter?.getTopRated(page: 1)
             self.presenter?.getPopular(page: 1)
+        }
+    }
+    
+    @objc private func navigationTapped(sender: UITapGestureRecognizer) {
+        switch sender.view {
+        case seeOnAirLabel:
+            router?.pushToList(from: self, category: .onAir)
+        case seeTopRatedLabel:
+            router?.pushToList(from: self, category: .topRated)
+        case seePopularLabel:
+            router?.pushToList(from: self, category: .popular)
+        default:
+            break
         }
     }
 

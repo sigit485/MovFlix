@@ -1,26 +1,28 @@
 PODS:
   - Alamofire (5.6.4)
+  - Cosmos (23.0.0)
   - Kingfisher (7.4.1)
-  - NVActivityIndicatorView (5.1.1):
-    - NVActivityIndicatorView/Base (= 5.1.1)
-  - NVActivityIndicatorView/Base (5.1.1)
+  - UIScrollView-InfiniteScroll (1.3.0)
 
 DEPENDENCIES:
   - Alamofire
+  - Cosmos (~> 23.0)
   - Kingfisher
-  - NVActivityIndicatorView
+  - UIScrollView-InfiniteScroll
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Cosmos
     - Kingfisher
-    - NVActivityIndicatorView
+    - UIScrollView-InfiniteScroll
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
-  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  UIScrollView-InfiniteScroll: a30af3dec185edd26d6ad50c521aa277f3ebf177
 
-PODFILE CHECKSUM: 60352495280c3a5ba72ef1c1b8a5fcea394c3fad
+PODFILE CHECKSUM: 5789e1170b4d9213e0c67e69d4ef0ba86f74d528
 
 COCOAPODS: 1.11.3

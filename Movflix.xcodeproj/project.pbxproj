@@ -39,6 +39,12 @@
 		84B31ADC296FA26E00305259 /* TVPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31ADB296FA26E00305259 /* TVPresenter.swift */; };
 		84B31ADF296FA8FB00305259 /* TVRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31ADE296FA8FB00305259 /* TVRouter.swift */; };
 		84B31AE1296FA90400305259 /* TVViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AE0296FA90400305259 /* TVViewBuilder.swift */; };
+		84B31AE3296FC1A200305259 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AE2296FC1A200305259 /* MovieListView.swift */; };
+		84B31AE5296FC93300305259 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AE4296FC93300305259 /* MovieTableViewCell.swift */; };
+		84B31AE7296FF27000305259 /* MovieListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AE6296FF27000305259 /* MovieListPresenter.swift */; };
+		84B31AE9296FFAEB00305259 /* UIActivity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AE8296FFAEB00305259 /* UIActivity+Extensions.swift */; };
+		84B31AEB2970115900305259 /* TVListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AEA2970115900305259 /* TVListPresenter.swift */; };
+		84B31AED2970131B00305259 /* TelevisionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B31AEC2970131B00305259 /* TelevisionListView.swift */; };
 		84ED45F6296DA43500D04BBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED45F5296DA43500D04BBB /* AppDelegate.swift */; };
 		84ED45FF296DA43700D04BBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84ED45FE296DA43700D04BBB /* Assets.xcassets */; };
 		84ED4602296DA43700D04BBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84ED4600296DA43700D04BBB /* LaunchScreen.storyboard */; };
@@ -102,6 +108,12 @@
 		84B31ADB296FA26E00305259 /* TVPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVPresenter.swift; sourceTree = "<group>"; };
 		84B31ADE296FA8FB00305259 /* TVRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVRouter.swift; sourceTree = "<group>"; };
 		84B31AE0296FA90400305259 /* TVViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewBuilder.swift; sourceTree = "<group>"; };
+		84B31AE2296FC1A200305259 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
+		84B31AE4296FC93300305259 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		84B31AE6296FF27000305259 /* MovieListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListPresenter.swift; sourceTree = "<group>"; };
+		84B31AE8296FFAEB00305259 /* UIActivity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivity+Extensions.swift"; sourceTree = "<group>"; };
+		84B31AEA2970115900305259 /* TVListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVListPresenter.swift; sourceTree = "<group>"; };
+		84B31AEC2970131B00305259 /* TelevisionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelevisionListView.swift; sourceTree = "<group>"; };
 		84ED45F2296DA43500D04BBB /* Movflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84ED45F5296DA43500D04BBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84ED45FE296DA43700D04BBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -234,6 +246,7 @@
 				8485546C296E7D3800B9FED4 /* Custom */,
 				84855469296E718F00B9FED4 /* Cell */,
 				8485545E296E64AA00B9FED4 /* MoviesView.swift */,
+				84B31AE2296FC1A200305259 /* MovieListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				8485546A296E71B400B9FED4 /* NowPlayingCollectionCell.swift */,
+				84B31AE4296FC93300305259 /* MovieTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -303,6 +317,7 @@
 				84855475296E960200B9FED4 /* UIView+Extensions.swift */,
 				84855483296EC03800B9FED4 /* CustomError+Extensions.swift */,
 				84855497296F040900B9FED4 /* URL+Extension.swift */,
+				84B31AE8296FFAEB00305259 /* UIActivity+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -324,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				84855479296EA96800B9FED4 /* TelevisionView.swift */,
+				84B31AEC2970131B00305259 /* TelevisionListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				8485548D296ED4E300B9FED4 /* MoviePresenter.swift */,
+				84B31AE6296FF27000305259 /* MovieListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -407,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				84B31ADB296FA26E00305259 /* TVPresenter.swift */,
+				84B31AEA2970115900305259 /* TVListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -726,11 +744,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B31AED2970131B00305259 /* TelevisionListView.swift in Sources */,
 				84B31AD1296F9C8000305259 /* TVConstant.swift in Sources */,
 				84855465296E654300B9FED4 /* Injection.swift in Sources */,
 				8485548B296EC85100B9FED4 /* APIEndpoint.swift in Sources */,
 				84855494296EFDB100B9FED4 /* MovieRouter.swift in Sources */,
 				8485547A296EA96800B9FED4 /* TelevisionView.swift in Sources */,
+				84B31AE9296FFAEB00305259 /* UIActivity+Extensions.swift in Sources */,
+				84B31AE3296FC1A200305259 /* MovieListView.swift in Sources */,
 				84855484296EC03800B9FED4 /* CustomError+Extensions.swift in Sources */,
 				84855491296EE36500B9FED4 /* PresenterProtocol.swift in Sources */,
 				84B31AD7296F9EAF00305259 /* TVRepository.swift in Sources */,
@@ -745,6 +766,7 @@
 				84B31AD4296F9E1700305259 /* TVResponseEntity.swift in Sources */,
 				84B31ADC296FA26E00305259 /* TVPresenter.swift in Sources */,
 				84855468296E6CBB00B9FED4 /* BaseView.swift in Sources */,
+				84B31AE5296FC93300305259 /* MovieTableViewCell.swift in Sources */,
 				84855482296EB9FB00B9FED4 /* APIManager.swift in Sources */,
 				84855480296EB94F00B9FED4 /* MovieResponseEntity.swift in Sources */,
 				8485548E296ED4E300B9FED4 /* MoviePresenter.swift in Sources */,
@@ -753,6 +775,8 @@
 				84B31AE1296FA90400305259 /* TVViewBuilder.swift in Sources */,
 				84855487296EC4B600B9FED4 /* MovieInteractor.swift in Sources */,
 				8485547D296EAB7B00B9FED4 /* MoviesConstant.swift in Sources */,
+				84B31AEB2970115900305259 /* TVListPresenter.swift in Sources */,
+				84B31AE7296FF27000305259 /* MovieListPresenter.swift in Sources */,
 				8485546E296E7D6700B9FED4 /* MovieBannerGradientView.swift in Sources */,
 				84855473296E959D00B9FED4 /* MoviesView.swift in Sources */,
 				84855498296F040900B9FED4 /* URL+Extension.swift in Sources */,

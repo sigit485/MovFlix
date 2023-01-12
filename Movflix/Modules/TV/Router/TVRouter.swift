@@ -20,4 +20,10 @@ class TVRouter {
         let nav = UINavigationController(rootViewController: vc)
         return nav
     }
+    
+    func pushToList(from rootViewController: UIViewController, category: TVCategory) {
+        let vc = TVViewBuilder.makeListTVView(router: self, category: category)
+        vc.hidesBottomBarWhenPushed = true
+        rootViewController.navigationController?.pushViewController(vc, animated: true)
+    }
 }

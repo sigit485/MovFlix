@@ -41,11 +41,14 @@ class MoviesView: BaseView {
         return label
     }()
     
-    private let seeNowPlayingLabel: UILabel = {
+    private lazy var seeNowPlayingLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.text = Constant.seeAllTitle
         label.textColor = Color.shared.redPrimary
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(navigationTapped(sender:)))
+        label.addGestureRecognizer(tapGesture)
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -91,11 +94,14 @@ class MoviesView: BaseView {
         return label
     }()
     
-    private let seeTopRatedLabel: UILabel = {
+    private lazy var seeTopRatedLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.text = Constant.seeAllTitle
         label.textColor = Color.shared.redPrimary
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(navigationTapped(sender:)))
+        label.addGestureRecognizer(tapGesture)
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -181,11 +187,14 @@ class MoviesView: BaseView {
         return label
     }()
     
-    private let seePopularLabel: UILabel = {
+    private lazy var seePopularLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.text = Constant.seeAllTitle
         label.textColor = Color.shared.redPrimary
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(navigationTapped(sender:)))
+        label.addGestureRecognizer(tapGesture)
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -208,6 +217,7 @@ class MoviesView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        createNavBar(image: UIImage(named: "splash")!)
         configureConstraint()
         setupRefreshControl()
     }
@@ -242,6 +252,19 @@ class MoviesView: BaseView {
             self.presenter?.getNowPlaying(page: 1)
             self.presenter?.getTopRated(page: 1)
             self.presenter?.getPopular(page: 1)
+        }
+    }
+    
+    @objc private func navigationTapped(sender: UITapGestureRecognizer) {
+        switch sender.view {
+        case seeNowPlayingLabel:
+            router?.pushToList(from: self, category: .nowPlaying)
+        case seeTopRatedLabel:
+            router?.pushToList(from: self, category: .topRated)
+        case seePopularLabel:
+            router?.pushToList(from: self, category: .popular)
+        default:
+            break
         }
     }
     
