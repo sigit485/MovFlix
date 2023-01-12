@@ -28,4 +28,10 @@ class MovieRouter {
         rootViewController.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func pushToDetail(from rootViewController: UIViewController, idMovie: Int) {
+        let vc = MovieViewBuilder.makeDetailMovieView(idMovie: idMovie)
+        vc.hidesBottomBarWhenPushed = true
+        rootViewController.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

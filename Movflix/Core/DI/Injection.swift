@@ -19,6 +19,11 @@ final class Injection {
         return TVRepository(remote: apiManager)
     }
     
+    private func provideDetailRepository() -> DetailRepositoryProtocol {
+        let apiManager = APIManager()
+        return DetailRepository(remote: apiManager)
+    }
+    
     func provideMovie() -> MovieUseCase {
         let repository = provideMovieRepository()
         return MovieInteractor(repository: repository)
@@ -27,6 +32,11 @@ final class Injection {
     func provideTV() -> TVUseCase {
         let repository = provideTVRepository()
         return TVInteractor(repository: repository)
+    }
+    
+    func provideDetail() -> DetailUseCase {
+        let repository = provideDetailRepository()
+        return DetailInteractor(repository: repository)
     }
     
 }

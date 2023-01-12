@@ -40,6 +40,7 @@ class MoviesView: BaseView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.text = MoviesConstant.genreTitle
+        label.isHidden = true
         return label
     }()
     
@@ -72,6 +73,7 @@ class MoviesView: BaseView {
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        collectionView.isHidden = true
         return collectionView
     }()
     
@@ -372,6 +374,15 @@ extension MoviesView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayo
         case genreCollection:
             guard let idGenre = presenter?.genreList[indexPath.row].id else { return }
             router?.pushGenreToList(from: self, idGenre: idGenre)
+        case nowPlayingCollection:
+            guard let idMovie = presenter?.nowPlaying[indexPath.row].id else { return }
+            router?.pushToDetail(from: self, idMovie: idMovie)
+        case topRatedCollection:
+            guard let idMovie = presenter?.topRated[indexPath.row].id else { return }
+            router?.pushToDetail(from: self, idMovie: idMovie)
+        case popularCollection:
+            guard let idMovie = presenter?.popular[indexPath.row].id else { return }
+            router?.pushToDetail(from: self, idMovie: idMovie)
         default:
             break
         }
@@ -398,6 +409,8 @@ extension MoviesView: PresenterToViewProtocol {
             case .popular:
                 self.popularCollection.reloadData()
             case .genre:
+                self.genreLabel.isHidden = false
+                self.genreCollection.isHidden = false
                 self.genreCollection.reloadData()
             default:
                 break

@@ -10,15 +10,17 @@ import Foundation
 extension APIManager {
     public static let baseURL = "https://api.themoviedb.org/3"
     public static let apiKey = "091e5fbd6bca51a32524f3f03d2a0d2e"
+    public static let movie = "/movie"
+    public static let videos = "/videos"
     
     public static func selectedMovieEndpoint(of category: MovieCategory) -> String {
         switch category {
         case .nowPlaying:
-            return "/movie/now_playing"
+            return "\(movie)/now_playing"
         case .topRated:
-            return "/movie/top_rated"
+            return "\(movie)/top_rated"
         case .popular:
-            return "/movie/popular"
+            return "\(movie)/popular"
         case .genre:
             return "/genre/movie/list"
         case .discover:

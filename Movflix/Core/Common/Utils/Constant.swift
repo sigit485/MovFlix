@@ -9,5 +9,6 @@ import Foundation
 
 class Constant {
     public static let posterURL = "https://image.tmdb.org/t/p/w300"
+    public static let posterLargeURL = "https://image.tmdb.org/t/p/w780"
     public static let seeAllTitle = "See All"
 }

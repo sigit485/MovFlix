@@ -27,5 +27,15 @@ class MovieViewBuilder {
         vc.idGenre = idGenre
         return vc
     }
+    
+    static func makeDetailMovieView(idMovie: Int) -> DetailView {
+        let vc = DetailView()
+        let interactor = Injection.init().provideDetail()
+        let presenter = DetailPresenter(useCase: interactor, delegate: vc)
+        vc.presenter = presenter
+        vc.idMovie = idMovie
+        return vc
+    }
+    
 }
 

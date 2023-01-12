@@ -101,6 +101,11 @@ extension MovieListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let idMovie = presenter?.listMovie[indexPath.row].id else { return }
+        router?.pushToDetail(from: self, idMovie: idMovie)
+    }
 }
 
 extension MovieListView: PresenterToViewProtocol {
