@@ -24,6 +24,7 @@ class MovieListView: BaseView {
     public var router: MovieRouter?
     
     public var category: MovieCategory = .nowPlaying
+    public var idGenre: Int?
     
     private let activityIndicator = UIActivityIndicatorView()
     private var isLoadMore = false
@@ -52,7 +53,11 @@ class MovieListView: BaseView {
     
     private func fetchData() {
         DispatchQueue.global().async {
-            self.presenter?.getListMovie(category: self.category)
+            if let idGenre = self.idGenre {
+                self.presenter?.getListMovieByGenre(idGenre: idGenre)
+            } else {
+                self.presenter?.getListMovie(category: self.category)
+            }
         }
     }
     
@@ -61,7 +66,11 @@ class MovieListView: BaseView {
         movieTableView.addInfiniteScroll { tableView in
             DispatchQueue.global().async {
                 self.isLoadMore = true
-                self.presenter?.loadMoreMovies(category: self.category)
+                if let idGenre = self.idGenre {
+                    self.presenter?.loadMoreMoviesByGenre(idGenre: idGenre)
+                } else {
+                    self.presenter?.loadMoreMovies(category: self.category)
+                }
             }
         }
     }

@@ -367,6 +367,16 @@ extension MoviesView: UICollectionViewDataSource {
 }
 
 extension MoviesView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case genreCollection:
+            guard let idGenre = presenter?.genreList[indexPath.row].id else { return }
+            router?.pushGenreToList(from: self, idGenre: idGenre)
+        default:
+            break
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == popularCollection {
             let index = scrollView.contentOffset.x / 160
@@ -389,6 +399,8 @@ extension MoviesView: PresenterToViewProtocol {
                 self.popularCollection.reloadData()
             case .genre:
                 self.genreCollection.reloadData()
+            default:
+                break
             }
         }
     }

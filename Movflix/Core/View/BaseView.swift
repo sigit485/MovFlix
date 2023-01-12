@@ -12,6 +12,7 @@ enum MovieCategory {
     case topRated
     case popular
     case genre
+    case discover
     
     var description: String {
         switch self {
@@ -23,6 +24,8 @@ enum MovieCategory {
             return "Popular"
         case .genre:
             return "Genre"
+        case .discover:
+            return "Discover"
         }
     }
     

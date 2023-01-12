@@ -21,6 +21,8 @@ extension APIManager {
             return "/movie/popular"
         case .genre:
             return "/genre/movie/list"
+        case .discover:
+            return "/discover/movie"
         }
     }
     

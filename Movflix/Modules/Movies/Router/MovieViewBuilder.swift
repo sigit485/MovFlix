@@ -17,13 +17,14 @@ class MovieViewBuilder {
         return vc
     }
     
-    static func makeListMovieView(router: MovieRouter, category: MovieCategory) -> MovieListView {
+    static func makeListMovieView(router: MovieRouter, category: MovieCategory, idGenre: Int? = nil) -> MovieListView {
         let vc = MovieListView()
         let interactor = Injection.init().provideMovie()
         let presenter = MovieListPresenter(movieUseCase: interactor, delegate: vc)
         vc.presenter = presenter
         vc.router = router
         vc.category = category
+        vc.idGenre = idGenre
         return vc
     }
 }

@@ -21,5 +21,11 @@ class MovieRouter {
         vc.hidesBottomBarWhenPushed = true
         rootViewController.navigationController?.pushViewController(vc, animated: true)
     }
+
+    func pushGenreToList(from rootViewController: UIViewController, idGenre: Int) {
+        let vc = MovieViewBuilder.makeListMovieView(router: self, category: .genre, idGenre: idGenre)
+        vc.hidesBottomBarWhenPushed = true
+        rootViewController.navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

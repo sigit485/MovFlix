@@ -10,6 +10,7 @@ import Foundation
 protocol MovieUseCase {
     func getMovieGenreList(completion: @escaping (Result<[GenreResult], Error>) -> Void)
     func getMovies(page: Int, category: MovieCategory, completion: @escaping (Result<[MovieResponseResult], Error>) -> Void)
+    func getMoviesByGenre(idGenre: Int, page: Int, completion: @escaping (Result<[MovieResponseResult], Error>) -> Void)
 }
 
 class MovieInteractor: MovieUseCase {
@@ -31,6 +32,26 @@ class MovieInteractor: MovieUseCase {
             case .success(let data):
                 let genres = data.genres ?? []
                 completion(.success(genres))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getMoviesByGenre(idGenre: Int, page: Int, completion: @escaping (Result<[MovieResponseResult], Error>) -> Void) {
+        let parameters: [String:Any] = [
+            "api_key": APIManager.apiKey,
+            "language": "en-US",
+            "include_video": true,
+            "page": page,
+            "with_genres": idGenre
+        ]
+        
+        repository.getMoviesByGenre(param: parameters) { result in
+            switch result {
+            case .success(let data):
+                let movies = data.results ?? []
+                completion(.success(movies))
             case .failure(let error):
                 completion(.failure(error))
             }
