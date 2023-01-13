@@ -11,7 +11,7 @@ Movflix include features such as trailers, reviews, and information about movies
 * ✅ VIPER
 * ✅ Modularization
 * ✅ Simple Unit Test
-* ✅ Alomofire for Data Source
+* ✅ Alamofire for Data Source
 * ✅ Programmaticaly
 * ✅ Simple Dependency Injection
 
