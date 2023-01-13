@@ -10,6 +10,7 @@ import Foundation
 protocol DetailPresenterProtocol {
     func getDetailMovie(idMovie: Int)
     func getVideosMovie(idMovie: Int)
+    func getReviewsMovie(idMovie: Int)
 }
 
 class DetailPresenter: DetailPresenterProtocol {
@@ -17,6 +18,7 @@ class DetailPresenter: DetailPresenterProtocol {
     private let delegate: PresenterToViewProtocol?
     
     public var youtubeKey: String?
+    public var reviews: [DetailReviewResult] = []
         
     init(useCase: DetailUseCase, delegate: PresenterToViewProtocol) {
         self.detailUseCase = useCase
@@ -44,6 +46,21 @@ class DetailPresenter: DetailPresenterProtocol {
             switch result {
             case .success(let data):
                 self.youtubeKey = data
+                self.delegate?.dismissLoading()
+                self.delegate?.successLoadData(object: data)
+            case .failure(let error):
+                self.delegate?.dismissLoading()
+                self.delegate?.failedLoadData(Error: error)
+            }
+        }
+    }
+    
+    func getReviewsMovie(idMovie: Int) {
+        delegate?.showLoading()
+        detailUseCase.getReviewsMovie(idMovie: idMovie) { result in
+            switch result {
+            case .success(let data):
+                self.reviews = data
                 self.delegate?.dismissLoading()
                 self.delegate?.successLoadData(object: data)
             case .failure(let error):

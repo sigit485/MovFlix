@@ -32,8 +32,10 @@ class MovieViewBuilder {
         let vc = DetailView()
         let interactor = Injection.init().provideDetail()
         let presenter = DetailPresenter(useCase: interactor, delegate: vc)
+        let router = DetailRouter()
         vc.presenter = presenter
         vc.idMovie = idMovie
+        vc.router = router
         return vc
     }
     

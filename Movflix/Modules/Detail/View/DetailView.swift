@@ -31,6 +31,7 @@ class DetailView: BaseView {
         stackView.addArrangedSubview(buttonPlay)
         stackView.addArrangedSubview(hStackHead)
         stackView.addArrangedSubview(vStackOverview)
+        stackView.addArrangedSubview(vStackReview)
         return stackView
     }()
     
@@ -165,8 +166,68 @@ class DetailView: BaseView {
         return rating
     }()
     
+    private let reviewTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.text = "Review"
+        return label
+    }()
+    
+    private let emptyReviewLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textColor = Color.shared.textPlaceholder
+        label.numberOfLines = 0
+        label.text = "There are no reviews at this time"
+        label.isHidden = true
+        return label
+    }()
+    
+    private lazy var reviewSeeAllLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.textColor = Color.shared.redPrimary
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.text = Constant.seeAllTitle
+        label.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(expandReviewList(sender:)))
+        label.addGestureRecognizer(tapGesture)
+        return label
+    }()
+    
+    lazy var hStackReviewTitle : UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .equalCentering
+        stack.addArrangedSubview(reviewTitleLabel)
+        stack.addArrangedSubview(reviewSeeAllLabel)
+        return stack
+    }()
+    
+    private let reviewView: DetailReviewView = {
+        let review = DetailReviewView(frame: .zero)
+        return review
+    }()
+    
+    lazy var vStackReview: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 6
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
+        stack.addArrangedSubview(hStackReviewTitle)
+        stack.addArrangedSubview(emptyReviewLabel)
+        stack.addArrangedSubview(reviewView)
+        return stack
+    }()
+    
     private let activityIndicator = UIActivityIndicatorView()
     
+    public var router: DetailRouter?
     public var presenter: DetailPresenter?
     public var idMovie: Int?
     
@@ -196,6 +257,7 @@ class DetailView: BaseView {
         DispatchQueue.global().async {
             self.presenter?.getDetailMovie(idMovie: idMovie)
             self.presenter?.getVideosMovie(idMovie: idMovie)
+            self.presenter?.getReviewsMovie(idMovie: idMovie)
         }
     }
     
@@ -231,6 +293,11 @@ class DetailView: BaseView {
             UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
         }
     }
+    
+    @objc private func expandReviewList(sender: UITapGestureRecognizer) {
+        guard let idMovie = self.idMovie else { return }
+        router?.pushToReviewList(from: self, idMovie: idMovie)
+    }
 }
 
 extension DetailView: PresenterToViewProtocol {
@@ -241,6 +308,14 @@ extension DetailView: PresenterToViewProtocol {
             } else if let _ = object as? String {
                 if self.presenter?.youtubeKey == nil || self.presenter?.youtubeKey?.isEmpty == true {
                     self.buttonPlay.isHidden = true
+                }
+            } else if let object = (object as? [DetailReviewResult]) {
+                if let firstReview = object.first {
+                    self.reviewView.setup(review: firstReview)
+                } else {
+                    self.emptyReviewLabel.isHidden = false
+                    self.reviewView.isHidden = true
+                    self.reviewSeeAllLabel.isHidden = true
                 }
             }
         }

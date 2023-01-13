@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		35D2F2460251E7881D5D54AF /* Pods_MovflixTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D6E6ABBD6F3B8EC0928062D /* Pods_MovflixTests.framework */; };
 		4ACCF7AE6E37C1D102297FA6 /* Pods_Movflix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 934B3886FD4D58643375942A /* Pods_Movflix.framework */; };
+		84738CD82970CDBA00219EF0 /* DetailReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CD72970CDBA00219EF0 /* DetailReviewView.swift */; };
+		84738CDA2970D7CE00219EF0 /* DetailReviewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CD92970D7CE00219EF0 /* DetailReviewListView.swift */; };
+		84738CDD2970D8B300219EF0 /* DetailReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CDC2970D8B300219EF0 /* DetailReviewTableViewCell.swift */; };
+		84738CDF2970EC5600219EF0 /* DetailReviewResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CDE2970EC5600219EF0 /* DetailReviewResponseEntity.swift */; };
+		84738CE42970F22000219EF0 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CE32970F22000219EF0 /* DetailRouter.swift */; };
+		84738CE62970F2C500219EF0 /* DetailViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CE52970F2C500219EF0 /* DetailViewBuilder.swift */; };
 		8485545B296E63A000B9FED4 /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485545A296E63A000B9FED4 /* MainTabBarView.swift */; };
 		84855465296E654300B9FED4 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84855464296E654300B9FED4 /* Injection.swift */; };
 		84855468296E6CBB00B9FED4 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84855467296E6CBB00B9FED4 /* BaseView.swift */; };
@@ -85,6 +91,12 @@
 		4EB9B2493530FB98E02094BB /* Pods_Movflix_MovflixUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movflix_MovflixUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6E6ABBD6F3B8EC0928062D /* Pods_MovflixTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovflixTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA60D8D03525A094D25FCA9 /* Pods-Movflix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movflix.release.xcconfig"; path = "Target Support Files/Pods-Movflix/Pods-Movflix.release.xcconfig"; sourceTree = "<group>"; };
+		84738CD72970CDBA00219EF0 /* DetailReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReviewView.swift; sourceTree = "<group>"; };
+		84738CD92970D7CE00219EF0 /* DetailReviewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReviewListView.swift; sourceTree = "<group>"; };
+		84738CDC2970D8B300219EF0 /* DetailReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReviewTableViewCell.swift; sourceTree = "<group>"; };
+		84738CDE2970EC5600219EF0 /* DetailReviewResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReviewResponseEntity.swift; sourceTree = "<group>"; };
+		84738CE32970F22000219EF0 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		84738CE52970F2C500219EF0 /* DetailViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewBuilder.swift; sourceTree = "<group>"; };
 		8485545A296E63A000B9FED4 /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
 		8485545E296E64AA00B9FED4 /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
 		84855464296E654300B9FED4 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
@@ -194,6 +206,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		84738CD62970CD9B00219EF0 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				84738CD72970CDBA00219EF0 /* DetailReviewView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		84738CDB2970D88D00219EF0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				84738CDC2970D8B300219EF0 /* DetailReviewTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		84738CE02970F1EC00219EF0 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				84738CE32970F22000219EF0 /* DetailRouter.swift */,
+				84738CE52970F2C500219EF0 /* DetailViewBuilder.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		84855454296E5F6200B9FED4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +269,7 @@
 		84855458296E5FE200B9FED4 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				84738CE02970F1EC00219EF0 /* Router */,
 				84B31AFD2970527000305259 /* Presenter */,
 				84B31AF82970453D00305259 /* Interactor */,
 				84B31AF5297043C000305259 /* Entities */,
@@ -444,7 +482,10 @@
 		84B31AF22970437600305259 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84738CDB2970D88D00219EF0 /* Cell */,
+				84738CD62970CD9B00219EF0 /* Custom */,
 				84B31AF32970438600305259 /* DetailView.swift */,
+				84738CD92970D7CE00219EF0 /* DetailReviewListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -454,6 +495,7 @@
 			children = (
 				84B31AF62970444200305259 /* DetailMovieResponseEntity.swift */,
 				84B31B0329705D1600305259 /* DetailVideoResponseEntity.swift */,
+				84738CDE2970EC5600219EF0 /* DetailReviewResponseEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -789,8 +831,10 @@
 				84855494296EFDB100B9FED4 /* MovieRouter.swift in Sources */,
 				8485547A296EA96800B9FED4 /* TelevisionView.swift in Sources */,
 				84B31AE9296FFAEB00305259 /* UIActivity+Extensions.swift in Sources */,
+				84738CDF2970EC5600219EF0 /* DetailReviewResponseEntity.swift in Sources */,
 				84B31AF42970438600305259 /* DetailView.swift in Sources */,
 				84B31AE3296FC1A200305259 /* MovieListView.swift in Sources */,
+				84738CE62970F2C500219EF0 /* DetailViewBuilder.swift in Sources */,
 				84855484296EC03800B9FED4 /* CustomError+Extensions.swift in Sources */,
 				84855491296EE36500B9FED4 /* PresenterProtocol.swift in Sources */,
 				84B31AD7296F9EAF00305259 /* TVRepository.swift in Sources */,
@@ -798,11 +842,13 @@
 				8485546B296E71B400B9FED4 /* NowPlayingCollectionCell.swift in Sources */,
 				84855476296E960200B9FED4 /* UIView+Extensions.swift in Sources */,
 				84B31B0429705D1600305259 /* DetailVideoResponseEntity.swift in Sources */,
+				84738CDD2970D8B300219EF0 /* DetailReviewTableViewCell.swift in Sources */,
 				84B31AD9296FA07900305259 /* TVInteractor.swift in Sources */,
 				84855489296EC58600B9FED4 /* MovieRepository.swift in Sources */,
 				84B31ADF296FA8FB00305259 /* TVRouter.swift in Sources */,
 				84855496296EFE5900B9FED4 /* MovieViewBuilder.swift in Sources */,
 				8485549A296F046A00B9FED4 /* Constant.swift in Sources */,
+				84738CD82970CDBA00219EF0 /* DetailReviewView.swift in Sources */,
 				84B31AD4296F9E1700305259 /* TVResponseEntity.swift in Sources */,
 				84B31ADC296FA26E00305259 /* TVPresenter.swift in Sources */,
 				84855468296E6CBB00B9FED4 /* BaseView.swift in Sources */,
@@ -821,9 +867,11 @@
 				84B31AEB2970115900305259 /* TVListPresenter.swift in Sources */,
 				84B31AE7296FF27000305259 /* MovieListPresenter.swift in Sources */,
 				8485546E296E7D6700B9FED4 /* MovieBannerGradientView.swift in Sources */,
+				84738CDA2970D7CE00219EF0 /* DetailReviewListView.swift in Sources */,
 				84855473296E959D00B9FED4 /* MoviesView.swift in Sources */,
 				84B31AFC297051A100305259 /* DetailInteractor.swift in Sources */,
 				84855498296F040900B9FED4 /* URL+Extension.swift in Sources */,
+				84738CE42970F22000219EF0 /* DetailRouter.swift in Sources */,
 				84855472296E7DAA00B9FED4 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

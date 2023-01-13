@@ -12,6 +12,7 @@ extension APIManager {
     public static let apiKey = "091e5fbd6bca51a32524f3f03d2a0d2e"
     public static let movie = "/movie"
     public static let videos = "/videos"
+    public static let reviews = "/reviews"
     
     public static func selectedMovieEndpoint(of category: MovieCategory) -> String {
         switch category {
