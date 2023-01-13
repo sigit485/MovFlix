@@ -27,7 +27,7 @@ class DetailReviewListView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationItem.title = "Review"
+        navigationItem.title = DetailConstant.review
         configureConstraint()
         fetchData()
     }
@@ -95,6 +95,10 @@ extension DetailReviewListView: PresenterToViewProtocol {
     }
     
     func failedLoadData(Error: Error) {
-        
+        DispatchQueue.main.async {
+            self.showAlert(message: Error.localizedDescription) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
 }

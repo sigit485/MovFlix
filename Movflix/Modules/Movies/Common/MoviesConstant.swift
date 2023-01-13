@@ -8,6 +8,7 @@
 import Foundation
 
 class MoviesConstant {
+    public static let movies = "Movies"
     public static let nowTitle = "Now Playing"
     public static let topTitle = "Top Rated"
     public static let popularTitle = "Popular"

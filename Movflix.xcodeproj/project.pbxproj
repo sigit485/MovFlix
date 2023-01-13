@@ -15,6 +15,10 @@
 		84738CDF2970EC5600219EF0 /* DetailReviewResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CDE2970EC5600219EF0 /* DetailReviewResponseEntity.swift */; };
 		84738CE42970F22000219EF0 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CE32970F22000219EF0 /* DetailRouter.swift */; };
 		84738CE62970F2C500219EF0 /* DetailViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CE52970F2C500219EF0 /* DetailViewBuilder.swift */; };
+		84738CE9297101F500219EF0 /* DetailConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CE8297101F500219EF0 /* DetailConstant.swift */; };
+		84738CEB2971068900219EF0 /* MoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CEA2971068900219EF0 /* MoviesTests.swift */; };
+		84738CED297114D600219EF0 /* DetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CEC297114D600219EF0 /* DetailTests.swift */; };
+		84738CF12971398600219EF0 /* DetailTVResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84738CF02971398600219EF0 /* DetailTVResponseEntity.swift */; };
 		8485545B296E63A000B9FED4 /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485545A296E63A000B9FED4 /* MainTabBarView.swift */; };
 		84855465296E654300B9FED4 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84855464296E654300B9FED4 /* Injection.swift */; };
 		84855468296E6CBB00B9FED4 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84855467296E6CBB00B9FED4 /* BaseView.swift */; };
@@ -61,7 +65,6 @@
 		84ED45F6296DA43500D04BBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED45F5296DA43500D04BBB /* AppDelegate.swift */; };
 		84ED45FF296DA43700D04BBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84ED45FE296DA43700D04BBB /* Assets.xcassets */; };
 		84ED4602296DA43700D04BBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84ED4600296DA43700D04BBB /* LaunchScreen.storyboard */; };
-		84ED460D296DA43700D04BBB /* MovflixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED460C296DA43700D04BBB /* MovflixTests.swift */; };
 		84ED4617296DA43700D04BBB /* MovflixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED4616296DA43700D04BBB /* MovflixUITests.swift */; };
 		84ED4619296DA43700D04BBB /* MovflixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED4618296DA43700D04BBB /* MovflixUITestsLaunchTests.swift */; };
 		E199DD12913BC71E4B5B3676 /* Pods_Movflix_MovflixUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EB9B2493530FB98E02094BB /* Pods_Movflix_MovflixUITests.framework */; };
@@ -97,6 +100,10 @@
 		84738CDE2970EC5600219EF0 /* DetailReviewResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReviewResponseEntity.swift; sourceTree = "<group>"; };
 		84738CE32970F22000219EF0 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
 		84738CE52970F2C500219EF0 /* DetailViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewBuilder.swift; sourceTree = "<group>"; };
+		84738CE8297101F500219EF0 /* DetailConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailConstant.swift; sourceTree = "<group>"; };
+		84738CEA2971068900219EF0 /* MoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTests.swift; sourceTree = "<group>"; };
+		84738CEC297114D600219EF0 /* DetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTests.swift; sourceTree = "<group>"; };
+		84738CF02971398600219EF0 /* DetailTVResponseEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTVResponseEntity.swift; sourceTree = "<group>"; };
 		8485545A296E63A000B9FED4 /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
 		8485545E296E64AA00B9FED4 /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
 		84855464296E654300B9FED4 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
@@ -146,7 +153,6 @@
 		84ED4601296DA43700D04BBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84ED4603296DA43700D04BBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84ED4608296DA43700D04BBB /* MovflixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovflixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		84ED460C296DA43700D04BBB /* MovflixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovflixTests.swift; sourceTree = "<group>"; };
 		84ED4612296DA43700D04BBB /* MovflixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovflixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84ED4616296DA43700D04BBB /* MovflixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovflixUITests.swift; sourceTree = "<group>"; };
 		84ED4618296DA43700D04BBB /* MovflixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovflixUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -231,6 +237,14 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		84738CE7297101E800219EF0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				84738CE8297101F500219EF0 /* DetailConstant.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		84855454296E5F6200B9FED4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +283,7 @@
 		84855458296E5FE200B9FED4 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				84738CE7297101E800219EF0 /* Common */,
 				84738CE02970F1EC00219EF0 /* Router */,
 				84B31AFD2970527000305259 /* Presenter */,
 				84B31AF82970453D00305259 /* Interactor */,
@@ -493,6 +508,7 @@
 		84B31AF5297043C000305259 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				84738CF02971398600219EF0 /* DetailTVResponseEntity.swift */,
 				84B31AF62970444200305259 /* DetailMovieResponseEntity.swift */,
 				84B31B0329705D1600305259 /* DetailVideoResponseEntity.swift */,
 				84738CDE2970EC5600219EF0 /* DetailReviewResponseEntity.swift */,
@@ -553,7 +569,8 @@
 		84ED460B296DA43700D04BBB /* MovflixTests */ = {
 			isa = PBXGroup;
 			children = (
-				84ED460C296DA43700D04BBB /* MovflixTests.swift */,
+				84738CEA2971068900219EF0 /* MoviesTests.swift */,
+				84738CEC297114D600219EF0 /* DetailTests.swift */,
 			);
 			path = MovflixTests;
 			sourceTree = "<group>";
@@ -825,6 +842,7 @@
 			files = (
 				84B31AED2970131B00305259 /* TelevisionListView.swift in Sources */,
 				84B31AFF2970527A00305259 /* DetailPresenter.swift in Sources */,
+				84738CE9297101F500219EF0 /* DetailConstant.swift in Sources */,
 				84B31AD1296F9C8000305259 /* TVConstant.swift in Sources */,
 				84855465296E654300B9FED4 /* Injection.swift in Sources */,
 				8485548B296EC85100B9FED4 /* APIEndpoint.swift in Sources */,
@@ -834,6 +852,7 @@
 				84738CDF2970EC5600219EF0 /* DetailReviewResponseEntity.swift in Sources */,
 				84B31AF42970438600305259 /* DetailView.swift in Sources */,
 				84B31AE3296FC1A200305259 /* MovieListView.swift in Sources */,
+				84738CF12971398600219EF0 /* DetailTVResponseEntity.swift in Sources */,
 				84738CE62970F2C500219EF0 /* DetailViewBuilder.swift in Sources */,
 				84855484296EC03800B9FED4 /* CustomError+Extensions.swift in Sources */,
 				84855491296EE36500B9FED4 /* PresenterProtocol.swift in Sources */,
@@ -880,7 +899,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84ED460D296DA43700D04BBB /* MovflixTests.swift in Sources */,
+				84738CEB2971068900219EF0 /* MoviesTests.swift in Sources */,
+				84738CED297114D600219EF0 /* DetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,4 +26,16 @@ class TVViewBuilder {
         vc.category = category
         return vc
     }
+    
+    static func makeDetailTVView(idTV: Int) -> DetailView {
+        let vc = DetailView()
+        let interactor = Injection.init().provideDetail()
+        let presenter = DetailPresenter(useCase: interactor, delegate: vc)
+        let router = DetailRouter()
+        vc.presenter = presenter
+        vc.idTV = idTV
+        vc.router = router
+        vc.isDetailTV = true
+        return vc
+    }
 }

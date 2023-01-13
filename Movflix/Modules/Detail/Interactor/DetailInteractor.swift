@@ -9,6 +9,7 @@ import Foundation
 
 protocol DetailUseCase {
     func getDetailMovie(idMovie: Int, completion: @escaping (Result<DetailMovieResponseEntity, Error>) -> Void)
+    func getDetailTV(idTV: Int, completion: @escaping (Result<DetailTVResponseEntity, Error>) -> Void)
     func getVideosMovie(idMovie: Int, completion: @escaping (Result<String?, Error>) -> Void)
     func getReviewsMovie(idMovie: Int, completion: @escaping (Result<[DetailReviewResult], Error>) -> Void)
 }
@@ -27,6 +28,22 @@ class DetailInteractor: DetailUseCase {
         ]
         
         repository.getDetailMovie(idMovie: idMovie, param: parameters) { result in
+            switch result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getDetailTV(idTV: Int, completion: @escaping (Result<DetailTVResponseEntity, Error>) -> Void) {
+        let parameters: [String:Any] = [
+            "api_key": APIManager.apiKey,
+            "language": "en-US"
+        ]
+        
+        repository.getDetailTV(idTV: idTV, param: parameters) { result in
             switch result {
             case .success(let data):
                 completion(.success(data))

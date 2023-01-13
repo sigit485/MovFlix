@@ -15,14 +15,12 @@ class DetailReviewView: UIView {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        label.text = "mooney240"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let avatarImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "home_ic_cinema")
         image.translatesAutoresizingMaskIntoConstraints = false
         image.heightAnchor.constraint(equalToConstant: 40).isActive = true
         image.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -34,7 +32,6 @@ class DetailReviewView: UIView {
         label.textColor = Color.shared.textPlaceholder
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.numberOfLines = 8
-        label.text = "**Avatar: The Way of Water follows in its predecessor’s footsteps with stunning effects and a mediocre story.** It’s a James Cameron film, so it’s impressive. The special effects, camerawork, world-building, and action were all off the charts. But Avatar: The Way of Water struggles like its predecessor in the story and character development departments. In fact, the story of The Way of Water is almost identical to the first Avatar. Instead of humans learning to be Na’vi and then fighting Stephen slang, a family of forest Na’vi learns to be ocean Na’vi and then fight Stephen Lang. But the new movie also focuses on a group of annoying teens that constantly get themselves in trouble and peril over and over again throughout the much too long 3+ hour runtime and sidelining better, more established characters. All the strengths and weaknesses of the first movie are back in this one, with the bonus of being compared to the original at every turn. It really is a visual feast and special effects masterpiece, but just like the first Avatar, that’s all it is."
         return label
     }()
     
@@ -56,7 +53,6 @@ class DetailReviewView: UIView {
         let label = UILabel()
         label.textColor = .orange
         label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
-        label.text = "10.0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -110,7 +106,9 @@ class DetailReviewView: UIView {
     
     func setup(review: DetailReviewResult) {
         nameLabel.text = review.author ?? "-"
-        avatarImageView.kf.setImage(with: URL.imagePath(from: review.authorDetails?.avatarPath ?? ""), placeholder: UIImage(named: "home_ic_cinema"))
+        avatarImageView.kf.setImage(
+            with: URL.imagePath(from: review.authorDetails?.avatarPath ?? ""),
+            placeholder: UIImage(named: "home_ic_cinema"))
         reviewLabel.text = review.content ?? ""
         ratingLabel.text = String(review.authorDetails?.rating ?? 0.0)
         

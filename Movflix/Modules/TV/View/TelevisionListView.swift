@@ -92,6 +92,11 @@ extension TelevisionListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let idTV = presenter?.listTV[indexPath.row].id else { return }
+        router?.pushToDetail(from: self, idTV: idTV)
+    }
 }
 
 extension TelevisionListView: PresenterToViewProtocol {
@@ -129,6 +134,10 @@ extension TelevisionListView: PresenterToViewProtocol {
     }
     
     func failedLoadData(Error: Error) {
-        
+        DispatchQueue.main.async {
+            self.showAlert(message: Error.localizedDescription) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
 }

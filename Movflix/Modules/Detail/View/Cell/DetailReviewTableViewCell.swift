@@ -54,7 +54,6 @@ class DetailReviewTableViewCell: UITableViewCell, ContentCellProtocol {
         let label = UILabel()
         label.textColor = .orange
         label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
-        label.text = "10.0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

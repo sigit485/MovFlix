@@ -9,6 +9,7 @@ import Foundation
 
 protocol DetailRepositoryProtocol {
     func getDetailMovie(idMovie: Int, param: [String : Any], completion: @escaping (Result<DetailMovieResponseEntity, Error>) -> Void)
+    func getDetailTV(idTV: Int, param: [String : Any], completion: @escaping (Result<DetailTVResponseEntity, Error>) -> Void)
     func getVideosMovie(idMovie: Int, param: [String : Any], completion: @escaping (Result<DetailVideoResponseEntity, Error>) -> Void)
     func getReviewMovie(idMovie: Int, param: [String : Any], completion: @escaping (Result<DetailReviewResponseEntity, Error>) -> Void)
 }
@@ -28,6 +29,24 @@ final class DetailRepository: DetailRepositoryProtocol {
                 do {
                     let decoder = JSONDecoder()
                     let data = try decoder.decode(DetailMovieResponseEntity.self, from: data)
+                    completion(.success(data))
+                } catch {
+                    completion(.failure(URLError.invalidResponse))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getDetailTV(idTV: Int, param: [String : Any], completion: @escaping (Result<DetailTVResponseEntity, Error>) -> Void) {
+        let endpoint = APIManager.tv + "/\(idTV)"
+        self.remote.fetchRequest(endpoint: endpoint, method: .get, parameters: param) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(DetailTVResponseEntity.self, from: data)
                     completion(.success(data))
                 } catch {
                     completion(.failure(URLError.invalidResponse))

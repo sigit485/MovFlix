@@ -304,6 +304,22 @@ extension TelevisionView: UICollectionViewDataSource {
 }
 
 extension TelevisionView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case onAirCollection:
+            guard let idTV = presenter?.onAirShows[indexPath.row].id else { return }
+            router?.pushToDetail(from: self, idTV: idTV)
+        case topRatedCollection:
+            guard let idTV = presenter?.topRated[indexPath.row].id else { return }
+            router?.pushToDetail(from: self, idTV: idTV)
+        case popularCollection:
+            guard let idTV = presenter?.popular[indexPath.row].id else { return }
+            router?.pushToDetail(from: self, idTV: idTV)
+        default:
+            break
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == popularCollection {
             let index = scrollView.contentOffset.x / 160
@@ -337,6 +353,8 @@ extension TelevisionView: PresenterToViewProtocol {
     }
     
     func failedLoadData(Error: Error) {
-        
+        DispatchQueue.main.async {
+            self.showAlert(message: Error.localizedDescription)
+        }
     }
 }

@@ -84,7 +84,7 @@ class DetailView: BaseView {
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Overview"
+        label.text = DetailConstant.overview
         return label
     }()
     
@@ -111,7 +111,7 @@ class DetailView: BaseView {
     private lazy var buttonPlay: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = Color.shared.redPrimary
-        btn.setTitle("  Watch Trailer/Preview", for: .normal)
+        btn.setTitle(DetailConstant.watch, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         btn.setTitleColor(.white, for: .normal)
         let image = UIImage(named: "detail_ic_play")?.withRenderingMode(.alwaysTemplate)
@@ -172,7 +172,7 @@ class DetailView: BaseView {
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Review"
+        label.text = DetailConstant.review
         return label
     }()
     
@@ -181,7 +181,7 @@ class DetailView: BaseView {
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = Color.shared.textPlaceholder
         label.numberOfLines = 0
-        label.text = "There are no reviews at this time"
+        label.text = DetailConstant.emptyReview
         label.isHidden = true
         return label
     }()
@@ -230,12 +230,18 @@ class DetailView: BaseView {
     public var router: DetailRouter?
     public var presenter: DetailPresenter?
     public var idMovie: Int?
+    public var idTV: Int?
+    public var isDetailTV = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureConstraint()
-        fetchData()
+        if isDetailTV {
+            fetchDetailTV()
+        } else {
+            fetchData()
+        }
     }
     
     private func configureConstraint() {
@@ -258,6 +264,13 @@ class DetailView: BaseView {
             self.presenter?.getDetailMovie(idMovie: idMovie)
             self.presenter?.getVideosMovie(idMovie: idMovie)
             self.presenter?.getReviewsMovie(idMovie: idMovie)
+        }
+    }
+    
+    private func fetchDetailTV() {
+        guard let idTV = self.idTV else { return }
+        DispatchQueue.global().async {
+            self.presenter?.getDetailTV(idTV: idTV)
         }
     }
     
@@ -284,12 +297,40 @@ class DetailView: BaseView {
         }
     }
     
+    private func setupBindingData(tv: DetailTVResponseEntity) {
+        scrollView.isHidden = false
+        buttonPlay.isHidden = true
+        emptyReviewLabel.isHidden = false
+        reviewView.isHidden = true
+        reviewSeeAllLabel.isHidden = true
+        
+        
+        titleLabel.text = tv.name ?? ""
+        navigationItem.title = tv.name ?? ""
+        dateLabel.text = "First Air Date: \(tv.firstAirDate ?? "-")"
+        voteLabel.text = "Vote: \(tv.voteAverage ?? 0.0)"
+        ratingView.rating = ((tv.voteAverage ?? 0) / 2)
+        overviewLabel.text = tv.overview ?? ""
+        
+        posterImageView.kf.setImage(
+            with: URL.imagePath(from: tv.posterPath ?? ""),
+            placeholder: UIImage(named: "home_ic_cinema"))
+        
+        if let backdropPath = tv.backdropPath, !backdropPath.isEmpty {
+            backdropImageView.kf.indicatorType = .activity
+            backdropImageView.kf.setImage(
+                with: URL.imageLargePath(from: backdropPath))
+        } else {
+            backdropImageView.isHidden = true
+        }
+    }
+    
     @objc private func openYoutube(sender: UIButton) {
         guard let youtubeId = presenter?.youtubeKey, !youtubeId.isEmpty else { return }
-        if let youtubeURL = URL(string: "youtube://\(youtubeId)"),
+        if let youtubeURL = URL(string: DetailConstant.youtubeDeepLink + youtubeId),
            UIApplication.shared.canOpenURL(youtubeURL) {
             UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
-        } else if let youtubeURL = URL(string: "https://www.youtube.com/watch?v=\(youtubeId)") {
+        } else if let youtubeURL = URL(string: DetailConstant.youtubeURL + youtubeId) {
             UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
         }
     }
@@ -317,6 +358,8 @@ extension DetailView: PresenterToViewProtocol {
                     self.reviewView.isHidden = true
                     self.reviewSeeAllLabel.isHidden = true
                 }
+            } else if let object = object as? DetailTVResponseEntity {
+                self.setupBindingData(tv: object)
             }
         }
     }
@@ -334,6 +377,10 @@ extension DetailView: PresenterToViewProtocol {
     }
     
     func failedLoadData(Error: Error) {
-        
+        DispatchQueue.main.async {
+            self.showAlert(message: Error.localizedDescription) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
 }

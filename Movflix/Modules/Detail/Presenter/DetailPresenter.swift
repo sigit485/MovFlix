@@ -13,6 +13,10 @@ protocol DetailPresenterProtocol {
     func getReviewsMovie(idMovie: Int)
 }
 
+protocol DetailTVPresenterProtocol {
+    func getDetailTV(idTV: Int)
+}
+
 class DetailPresenter: DetailPresenterProtocol {
     private let detailUseCase: DetailUseCase
     private let delegate: PresenterToViewProtocol?
@@ -69,6 +73,21 @@ class DetailPresenter: DetailPresenterProtocol {
             }
         }
     }
-    
-    
+}
+
+
+extension DetailPresenter: DetailTVPresenterProtocol {
+    func getDetailTV(idTV: Int) {
+        delegate?.showLoading()
+        detailUseCase.getDetailTV(idTV: idTV) { result in
+            switch result {
+            case .success(let data):
+                self.delegate?.dismissLoading()
+                self.delegate?.successLoadData(object: data)
+            case .failure(let error):
+                self.delegate?.dismissLoading()
+                self.delegate?.failedLoadData(Error: error)
+            }
+        }
+    }
 }

@@ -11,6 +11,7 @@ extension APIManager {
     public static let baseURL = "https://api.themoviedb.org/3"
     public static let apiKey = "091e5fbd6bca51a32524f3f03d2a0d2e"
     public static let movie = "/movie"
+    public static let tv = "/tv"
     public static let videos = "/videos"
     public static let reviews = "/reviews"
     

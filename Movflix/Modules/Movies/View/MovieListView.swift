@@ -141,6 +141,10 @@ extension MovieListView: PresenterToViewProtocol {
     }
     
     func failedLoadData(Error: Error) {
-        
+        DispatchQueue.main.async {
+            self.showAlert(message: Error.localizedDescription) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
 }

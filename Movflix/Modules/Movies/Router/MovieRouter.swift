@@ -11,7 +11,7 @@ class MovieRouter {
     
     func setRoot() -> UINavigationController {
         let vc = MovieViewBuilder.makeMovieView(router: self)
-        vc.tabBarItem = UITabBarItem(title: "Movies", image: UIImage(named: "tab_ic_movie"), tag: 0)
+        vc.tabBarItem = UITabBarItem(title: MoviesConstant.movies, image: UIImage(named: "tab_ic_movie"), tag: 0)
         let nav = UINavigationController(rootViewController: vc)
         return nav
     }
